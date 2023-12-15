@@ -26,9 +26,10 @@ jobs:
       run: npm run build --prefix front
 
     - name: Run tests and generate coverage report
-      run: npm test --prefix front
-
+      run: npm run test --prefix front
+  
     - name: Upload coverage report to Codecov
       uses: codecov/codecov-action@v2
       with:
         file: front/coverage/lcov-report/coverage-final.json
+
