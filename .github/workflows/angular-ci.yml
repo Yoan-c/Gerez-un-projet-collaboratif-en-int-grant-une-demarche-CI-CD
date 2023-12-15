@@ -26,7 +26,8 @@ jobs:
       run: npm run build --prefix front
 
     - name: Run tests and generate coverage report
-      run: npm run test --prefix front
+      run: npm run test --watch=false --code-coverage --no-progress
+      working-directory: front
   
     - name: Upload coverage report to Codecov
       uses: codecov/codecov-action@v2
