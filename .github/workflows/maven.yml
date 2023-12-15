@@ -47,10 +47,13 @@ jobs:
         node-version: '14'
 
     - name: Install dependencies
-      run: npm install front
+      run: npm install ./front
+    
+    - name: Move dependencies
+      run: mv node_modules ./front
 
     - name: Build with Angular CLI
-      run: npm run build front
+      run: npm run build ./front/
 
     - name: Run tests
-      run: npm run test front
+      run: npm run test ./front/
