@@ -2,7 +2,7 @@
 
 Clone project:
 
-> git clone XXXXX
+> git clone XXXX
 
 ## Front-end 
 
