@@ -22,15 +22,15 @@ jobs:
 
     - name: Build with Maven
       run: mvn -f back/pom.xml clean install
-    
+
+    - name: Generate Surefire Test Reports
+      run: mvn -f back/pom.xml surefire-report:report
+
     - name: Test Report
       uses: phoenix-actions/test-reporting@v8
-      id: test-report               # Set ID reference for step
-      if: success() || failure()    # run this step even if previous step failed
+      id: test-report
+      if: always()  # Exécuter cette étape même si les étapes précédentes échouent
       with:
-        name: JEST Tests            # Name of the check run which will be created
-        path: reports/jest-*.xml    # Path to test results
-        reporter: jest-junit        # Format of test results
-        
-    - name: Run tests
-      run: mvn -f back/pom.xml test
+        name: Maven Surefire Tests
+        path: back/target/site/surefire-report  # Choisir le chemin approprié selon votre configuration
+        reporter: junit
