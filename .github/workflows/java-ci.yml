@@ -47,4 +47,4 @@ jobs:
           run:  npm install
     
         - name: Run tests and generate coverage report
-          run:  npm run test
+          run:  npm run test_CI
