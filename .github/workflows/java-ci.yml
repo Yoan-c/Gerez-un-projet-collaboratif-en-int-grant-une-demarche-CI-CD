@@ -12,7 +12,7 @@ on:
             # Push events to branches matching refs/heads/card-*
             - 'card-/**'
 jobs:
-    build:
+    build_Java:
         runs-on: windows-latest
         defaults:
             run:
@@ -26,5 +26,25 @@ jobs:
                   distribution: 'temurin'
                   cache: 'maven'
                   
-            - name: Build with Maven
+            - name: Build and Test with Maven
               run: mvn -B clean package --file pom.xml
+              
+    build_Angular:
+        runs-on: windows-latest
+        defaults:
+          run:
+            working-directory: front
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+    
+        - name: Set up Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: '14'
+    
+        - name: Install dependencies
+          run:  npm install
+    
+        - name: Run tests and generate coverage report
+          run:  npm run test
