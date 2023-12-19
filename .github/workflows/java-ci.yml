@@ -50,7 +50,7 @@ jobs:
           run:  npm run test_CI
 
 
-    build:
+    buildSonaQube:
         name: Build
         runs-on: ubuntu-latest
         permissions: read-all
@@ -72,7 +72,7 @@ jobs:
             uses: actions/cache@v1
             with:
               path: ~/.m2
-              key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+              key: ${{ runner.os }}-m2-${{ hashFiles('**/back/pom.xml') }}
               restore-keys: ${{ runner.os }}-m2
           - name: Build and analyze
             env:
