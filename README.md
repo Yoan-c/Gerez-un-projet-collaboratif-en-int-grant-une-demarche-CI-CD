@@ -6,7 +6,7 @@ Clone project:
 
 ## Front-end 
 
-Go inside folder the front folder:
+Go inside folder the front folder: 
 
 > cd front
 
