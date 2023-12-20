@@ -79,11 +79,11 @@ jobs:
     sonarqube:
         name: SonarQube
         needs: 
-            - build_Angular
             - build_Java
         runs-on: ubuntu-latest
         permissions: read-all
         steps:
+          - run: cd back  
           - uses: actions/checkout@v2
             with:
               fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
