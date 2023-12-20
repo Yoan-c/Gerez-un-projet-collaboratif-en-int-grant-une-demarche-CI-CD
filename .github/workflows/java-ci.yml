@@ -73,10 +73,8 @@ jobs:
         - name: Run tests and generate coverage report
           run:  npm run test_CI
                      
-        - name: Upload coverage report to GitHub Actions
-          uses: actions/download-artifact@v4
+        - uses: actions/download-artifact@v4
           with:
-            name: coverage
             path: coverage
 
 
