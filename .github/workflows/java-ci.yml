@@ -38,7 +38,7 @@ jobs:
               run: |
                   git config user.email "coutenay.yoan@hotmail.fr"
                   git config user.name "GitHub Actions"
-                  git add back/target/site
+                  git add /target/site
                   git commit -m "Add backend test coverage reports"
                   git push origin main
         
