@@ -37,7 +37,7 @@ jobs:
             - name: 'Add and commit report'
               run: |
                   dir 
-                  mov target/site .
+                  mv target/site .
                   dir
                   git config user.email "coutenay.yoan@hotmail.fr"
                   git config user.name "GitHub Actions"
