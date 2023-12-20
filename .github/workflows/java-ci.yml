@@ -25,6 +25,11 @@ jobs:
                   java-version: 11
                   distribution: 'temurin'
                   cache: 'maven'
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: '16'
                   
             - name: Build and Test with Maven
               run: mvn -B clean package --file pom.xml
