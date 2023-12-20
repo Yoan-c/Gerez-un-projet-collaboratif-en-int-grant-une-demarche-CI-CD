@@ -44,6 +44,7 @@ jobs:
               
     build_Angular:
         runs-on: windows-latest
+        needs: build_Java
         defaults:
           run:
             working-directory: front
