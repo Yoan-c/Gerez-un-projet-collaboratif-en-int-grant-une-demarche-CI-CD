@@ -31,6 +31,7 @@ jobs:
 
             - name: 'Add and commit report'
               run: |
+                  git pull
                   if (Test-Path "site") {
                     Remove-Item -Recurse -Force "site"  # Supprime le dossier s'il existe déjà
                   }
@@ -81,6 +82,7 @@ jobs:
                      
         - name: 'Add and commit report'
           run: |
+            git pull
             if (Test-Path "bobapp") {
                 Remove-Item -Recurse -Force "bobapp"  # Supprime le dossier s'il existe déjà
             }
