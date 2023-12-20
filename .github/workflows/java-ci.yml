@@ -34,10 +34,11 @@ jobs:
             - name: Build and Test with Maven
               run: mvn -B clean package --file pom.xml
 
-            - uses: actions/upload-artifact@v4
-              with:
-                name: back_coverage
-                path: back/target/site
+            - name: 'Add and commit report'
+              run: |
+                  git add back/target/site
+                  git commit -m "Add backend test coverage reports"
+                  git push origin main
         
             - name: Cache SonarQube packages
               uses: actions/cache@v1
