@@ -37,9 +37,11 @@ jobs:
             - name: 'Add and commit report'
               run: |
                   dir 
+                  mov target/site .
+                  dir
                   git config user.email "coutenay.yoan@hotmail.fr"
                   git config user.name "GitHub Actions"
-                  git add target/site
+                  git add site
                   git commit -m "Add backend test coverage reports"
                   git push origin main
         
