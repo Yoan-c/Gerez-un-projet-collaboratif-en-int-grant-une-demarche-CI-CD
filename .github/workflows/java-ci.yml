@@ -80,11 +80,12 @@ jobs:
                   ${{ runner.workspace }}/front/node_modules
                      
         - name: Upload coverage report to GitHub Actions
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v2.1.2  # Utilisez la dernière version disponible
           with:
             name: coverage
             path: front/coverage
           env:
             NODE_VERSION: '16'
+
 
 
