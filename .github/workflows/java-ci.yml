@@ -31,6 +31,9 @@ jobs:
 
             - name: 'Add and commit report'
               run: |
+                  if [ -d "target/site" ]; then
+                    rm -rf target/site  # Supprime le dossier s'il existe déjà
+                  fi
                   mv target/site .
                   git config user.email "coutenay.yoan@hotmail.fr"
                   git config user.name "GitHub Actions"
@@ -78,6 +81,9 @@ jobs:
                      
         - name: 'Add and commit report'
           run: |
+            if [ -d "coverage/bobapp" ]; then
+               rm -rf coverage/bobapp  # Supprime le dossier s'il existe déjà
+            fi
             mv coverage/bobapp .
             git config user.email "coutenay.yoan@hotmail.fr"
             git config user.name "GitHub Actions"
