@@ -36,7 +36,7 @@ jobs:
 
             - name: 'Add and commit report'
               run: |
-                  ls -la
+                  ls -la .
                   git config user.email "coutenay.yoan@hotmail.fr"
                   git config user.name "GitHub Actions"
                   git add target/site
