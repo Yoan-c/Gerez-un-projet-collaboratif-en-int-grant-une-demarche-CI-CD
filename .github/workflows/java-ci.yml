@@ -25,20 +25,13 @@ jobs:
                   java-version: 11
                   distribution: 'temurin'
                   cache: 'maven'
-
-            - name: Set up Node.js
-              uses: actions/setup-node@v4
-              with:
-                node-version: '16'
                   
             - name: Build and Test with Maven
               run: mvn -B clean package --file pom.xml
 
             - name: 'Add and commit report'
               run: |
-                  dir 
                   mv target/site .
-                  dir
                   git config user.email "coutenay.yoan@hotmail.fr"
                   git config user.name "GitHub Actions"
                   git add site
@@ -83,10 +76,14 @@ jobs:
         - name: Run tests and generate coverage report
           run:  npm run test_CI
                      
-        - uses: actions/upload-artifact@v4
-          with:
-            name: front_coverage
-            path: front/coverage
+        - name: 'Add and commit report'
+          run: |
+            mv coverage/bobapp .
+            git config user.email "coutenay.yoan@hotmail.fr"
+            git config user.name "GitHub Actions"
+            git add bobapp
+            git commit -m "Add frontend test coverage reports"
+            git push origin main
 
 
 
