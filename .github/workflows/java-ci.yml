@@ -32,6 +32,10 @@ jobs:
             - name: 'Add and commit report'
               run: |
                   dir
+                  if (Test-Path "site") {
+                    Remove-Item -Recurse -Force "site"  # Supprime le dossier s'il existe déjà
+                  }
+                  dir
                   mv target/site .
                   git config user.email "coutenay.yoan@hotmail.fr"
                   git config user.name "GitHub Actions"
