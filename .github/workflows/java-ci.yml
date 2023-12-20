@@ -34,8 +34,7 @@ jobs:
             - name: Build and Test with Maven
               run: mvn -B clean package --file pom.xml
 
-            - name: Upload coverage report to GitHub Actions
-              uses: actions/upload-artifact@v4
+            - uses: actions/upload-artifact@v4
               with:
                 name: back_coverage
                 path: back/target/site
