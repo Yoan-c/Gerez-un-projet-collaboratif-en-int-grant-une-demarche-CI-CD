@@ -32,7 +32,7 @@ jobs:
             - name: Upload coverage report to GitHub Actions
               uses: actions/upload-artifact@v2
               with:
-                name: coverage
+                name: back_coverage
                 path: back/target/site
         
             - name: Cache SonarQube packages
@@ -75,6 +75,7 @@ jobs:
                      
         - uses: actions/upload-artifact@v4
           with:
+            name: front_coverage
             path: front/coverage
 
 
