@@ -78,6 +78,7 @@ jobs:
 
     sonarqube:
         name: Build
+        needs: build_Angular
         runs-on: ubuntu-latest
         permissions: read-all
         steps:
@@ -88,6 +89,7 @@ jobs:
             uses: actions/setup-java@v1
             with:
               java-version: 17
+          - run: dir 
           - name: Cache SonarQube packages
             uses: actions/cache@v1
             with:
