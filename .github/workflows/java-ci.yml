@@ -82,10 +82,7 @@ jobs:
             - build_Java
         runs-on: ubuntu-latest
         permissions: read-all
-        steps:
-          - run: |
-              dir
-              cd back  
+        steps: 
           - uses: actions/checkout@v2
             with:
               fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
@@ -99,6 +96,9 @@ jobs:
               path: ~/.sonar/cache
               key: ${{ runner.os }}-sonar
               restore-keys: ${{ runner.os }}-sonar
+          - run: |
+              dir
+              cd back 
           - name: Cache Maven packages
             uses: actions/cache@v1
             with:
