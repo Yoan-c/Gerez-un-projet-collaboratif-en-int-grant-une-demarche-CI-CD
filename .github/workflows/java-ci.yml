@@ -77,12 +77,10 @@ jobs:
             git push origin main
 
     sonarqube:
-        name: SonarQube
-        needs: 
-            - build_Java
+        name: Build
         runs-on: ubuntu-latest
         permissions: read-all
-        steps: 
+        steps:
           - uses: actions/checkout@v2
             with:
               fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
@@ -96,9 +94,6 @@ jobs:
               path: ~/.sonar/cache
               key: ${{ runner.os }}-sonar
               restore-keys: ${{ runner.os }}-sonar
-          - run: |
-              dir
-              cd back 
           - name: Cache Maven packages
             uses: actions/cache@v1
             with:
@@ -109,7 +104,6 @@ jobs:
             env:
               SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
               SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-            run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=CI-CD -Dsonar.projectName='bobapp'
-    
+            run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=bobapp -Dsonar.projectName='bobapp'
 
 
