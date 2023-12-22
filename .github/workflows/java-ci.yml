@@ -78,7 +78,7 @@ jobs:
 
     sonarqube:
         name: Build
-        needs: build_Angular
+        needs: build_Java
         runs-on: ubuntu-latest
         permissions: read-all
         steps:
