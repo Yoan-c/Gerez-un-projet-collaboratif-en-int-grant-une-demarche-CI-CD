@@ -111,5 +111,10 @@ jobs:
             run: |
                 cd back
                 mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=bobapp -Dsonar.projectName='bobapp'
+                mvn clean verify sonar:sonar \
+                  -Dsonar.projectKey=CICD \
+                  -Dsonar.projectName='CICD' \
+                  -Dsonar.host.url=http://localhost:9000 \
+                  -Dsonar.token=sqp_b6b5d9235795c78e38c1da7169e53edb66c08647
 
 
