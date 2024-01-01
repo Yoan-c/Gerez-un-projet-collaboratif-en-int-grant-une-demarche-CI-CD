@@ -10,9 +10,6 @@ jobs:
   DemosSonarCloud:
     name: Sonar
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: back 
     steps:
       - uses: actions/checkout@v3
         with:
