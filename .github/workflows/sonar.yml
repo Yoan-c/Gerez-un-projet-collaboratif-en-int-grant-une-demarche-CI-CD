@@ -21,8 +21,9 @@ jobs:
           SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
         with:
           args: >
+              -Dsonar.verbose=true
               -Dsonar.organization=yoan-c
-              -Dsonar.projectKey=Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+              -Dsonar.projectKey=Yoan-c_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
               -Dsonar.branch.name=main
               -Dsonar.python.coverage.reportPaths=coverage.xml
     
