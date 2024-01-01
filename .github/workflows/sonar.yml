@@ -23,5 +23,6 @@ jobs:
           args: >
               -Dsonar.organization=yoan-c
               -Dsonar.projectKey=Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+              -Dsonar.branch.name=main
               -Dsonar.python.coverage.reportPaths=coverage.xml
     
