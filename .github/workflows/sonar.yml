@@ -43,6 +43,9 @@ jobs:
 
   build-front:
     name: Build and analyze front
+    defaults:
+      run:
+        working-directory: front 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
