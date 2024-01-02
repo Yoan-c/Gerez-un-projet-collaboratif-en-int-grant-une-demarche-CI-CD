@@ -39,7 +39,7 @@ jobs:
         run: |
           mv sonar.properties back/
           cd back
-          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Yoan-c_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD -Dsonar.config.location=sonar.properties
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.config.location=sonar.properties
 
   build-front:
     name: Build and analyze front
