@@ -7,52 +7,30 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  build-back:
-    name: Build and analyze back
-    defaults:
-      run:
-        working-directory: back 
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: 17
-          distribution: 'zulu'
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-      - name: Cache Maven packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
-      - name: Build and analyze back
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_PROJECT_KEY: yoan-c_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD:test:back
-       
-
-  build-front:
-    name: Build and analyze front
+  sonarcloudScan1:
+    name: SonarCloudScan1
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0  
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_PROJECT_KEY: yoan-c_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD:test:front
+        with:
+          projectBaseDir: back/
+       
+  sonarcloudScan2:
+      name: SonarCloudScan2
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+          with:
+            fetch-depth: 0  
+        - name: SonarCloud Scan
+          uses: SonarSource/sonarcloud-github-action@master
+          env: 
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          with:
+            projectBaseDir: front/
