@@ -1,4 +1,4 @@
-name: Java CI
+name: Tests
 
 on:
     # Trigger the workflow on push for the main branch
@@ -9,8 +9,6 @@ on:
     pull_request:
         branches:
             - main
-            # Push events to branches matching refs/heads/card-*
-            - 'card-/**'
 jobs:
     build_Java:
         runs-on: windows-latest
