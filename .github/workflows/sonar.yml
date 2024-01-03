@@ -61,6 +61,7 @@ jobs:
           cd front
           ls -l 
           ls -l coverage
+          cat coverage/lcov.info
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
