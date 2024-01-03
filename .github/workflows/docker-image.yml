@@ -1,44 +1,34 @@
-name: Build and Deploy Docker Image
+name: ci
 
 on:
   push:
     branches:
-      - main
+      - 'main'
 
 jobs:
-  build:
+  docker:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-
-    - name: Install Dependencies
-      run: npm install
-
-    - name: Build Docker Image
-      run: docker build -t yoan/bobapp_front:latest ./front
-
-  deploy:
-    runs-on: ubuntu-latest
-
-    needs: build
-    
-    steps:
-    - name: Set up Docker
-      uses: docker/setup-docker@v2
-      with:
-        dockerfile: front/Dockerfile
-        context: ./front
-
-    - name: Log in to Docker Hub
-      run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-
-    - name: Push Docker Image to Docker Hub
-      run: docker push yoan/bobapp_front:latest
-
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: ./front
+          file: front/Dockerfile
+          push: true
+          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/bobapp_front:latest
