@@ -54,7 +54,7 @@ jobs:
       - name: Install istanbul
         run: |
           cd front
-          ng test --browsers=ChromeHeadless --code-coverage
+          ng test --browsers=ChromeHeadless --code-coverage --watch=false
 
       - name: liste file
         run: |
