@@ -32,14 +32,13 @@ jobs:
             - name: 'Add and commit report'
               run: |
                   git pull
-                  if (Test-Path "coverage") {
-                    Remove-Item -Recurse -Force "coverage"  # Supprime le dossier s'il existe déjà
+                  if (Test-Path "site") {
+                    Remove-Item -Recurse -Force "site"  # Supprime le dossier s'il existe déjà
                   }
                   mv target/site .
                   git config user.email "coutenay.yoan@hotmail.fr"
                   git config user.name "GitHub Actions"
-                  mv site coverage
-                  git add coverage
+                  git add site
                   git commit -m "Add backend test coverage reports"
                   git push origin main
               
@@ -63,6 +62,9 @@ jobs:
     
         - name: Run tests and generate coverage report
           run:  npm run test_CI
+
+        - name: liste dir
+          run:  ls -l
                      
         - name: 'Add and commit report'
           run: |
