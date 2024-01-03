@@ -72,10 +72,10 @@ jobs:
             if (Test-Path "bobapp") {
                 Remove-Item -Recurse -Force "bobapp"  # Supprime le dossier s'il existe déjà
             }
-            mv coverage/bobapp .
+            mv coverage/ .
             git config user.email "coutenay.yoan@hotmail.fr"
             git config user.name "GitHub Actions"
-            git add bobapp
+            git add .
             git commit -m "Add frontend test coverage reports"
             git push origin main
 
