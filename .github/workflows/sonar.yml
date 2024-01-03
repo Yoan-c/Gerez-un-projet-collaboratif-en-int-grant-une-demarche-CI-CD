@@ -5,6 +5,10 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+  workflow_run:
+    workflows: ["Tests"]
+    types:
+      - completed
 jobs:
   Back:
     name: build and analyze backend
