@@ -51,7 +51,9 @@ jobs:
          cd front
          npm install
       - name: Run tests and generate coverage report
-        run:  npm run test_CI
+        run: |
+          cd front 
+          npm run test_CI
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
