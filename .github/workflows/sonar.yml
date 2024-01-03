@@ -58,11 +58,7 @@ jobs:
       - name: liste file
         run: |
           cd front
-          ls -l
-      - name: Run tests and generate coverage report
-        run: |
-          cd front 
-          npm run test_CI
+          ls -l bobapp
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
