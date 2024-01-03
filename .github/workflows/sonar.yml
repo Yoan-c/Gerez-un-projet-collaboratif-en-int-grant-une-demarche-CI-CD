@@ -52,6 +52,7 @@ jobs:
          npm install
       - name: Install istanbul
         run: |
+          npm install -g @angular/cli
           ng test --browsers=ChromeHeadless --code-coverage
 
       - name: liste file
