@@ -56,7 +56,9 @@ jobs:
           npm install -g istanbul
           istanbul report --dir=./bobapp --type=lcov
       - name: liste file
-        run: ls -l
+        run: |
+          cd front
+          ls -l
       - name: Run tests and generate coverage report
         run: |
           cd front 
