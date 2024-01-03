@@ -32,13 +32,13 @@ jobs:
             - name: 'Add and commit report'
               run: |
                   git pull
-                  if (Test-Path "site") {
-                    Remove-Item -Recurse -Force "site"  # Supprime le dossier s'il existe déjà
+                  if (Test-Path "back_coverage") {
+                    Remove-Item -Recurse -Force "back_coverage"  # Supprime le dossier s'il existe déjà
                   }
-                  mv target/site .
+                  mv target/site back_coverage
                   git config user.email "coutenay.yoan@hotmail.fr"
                   git config user.name "GitHub Actions"
-                  git add site
+                  git add .
                   git commit -m "Add backend test coverage reports"
                   git push origin main
               
@@ -72,7 +72,7 @@ jobs:
             if (Test-Path "bobapp") {
                 Remove-Item -Recurse -Force "bobapp"  # Supprime le dossier s'il existe déjà
             }
-            mv coverage/ .
+            mv coverage front_converage
             git config user.email "coutenay.yoan@hotmail.fr"
             git config user.name "GitHub Actions"
             git add .
