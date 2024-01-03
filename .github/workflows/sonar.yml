@@ -52,13 +52,12 @@ jobs:
          npm install
       - name: Install istanbul
         run: |
-          cd front
-          npm install -g istanbul
-          istanbul report --dir=./bobapp --type=lcov
+          ng test --browsers=ChromeHeadless --code-coverage
+
       - name: liste file
         run: |
           cd front
-          ls -l bobapp
+          ls -l 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
