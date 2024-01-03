@@ -50,6 +50,8 @@ jobs:
         run: |
          cd front
          npm install
+      - name: Install Chromium
+        run: sudo apt-get install -y chromium-browser
       - name: Run tests and generate coverage report
         run: |
           cd front 
