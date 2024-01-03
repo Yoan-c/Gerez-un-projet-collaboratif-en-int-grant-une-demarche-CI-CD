@@ -69,6 +69,5 @@ jobs:
         with:
           projectBaseDir: front/
           args: >
-            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
-            -Dsonar.verbose=true
+            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
 
