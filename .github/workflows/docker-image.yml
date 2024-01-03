@@ -1,9 +1,15 @@
-name: ci
+name: Docker
 
 on:
   push:
     branches:
       - 'main'
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_run:
+    workflows: ["Tests", "SonarCloud"]
+    types:
+      - completed
 
 jobs:
  docker_back:
