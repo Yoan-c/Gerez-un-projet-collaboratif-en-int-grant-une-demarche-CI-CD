@@ -35,10 +35,10 @@ jobs:
                   if (Test-Path "coverage") {
                     Remove-Item -Recurse -Force "coverage"  # Supprime le dossier s'il existe déjà
                   }
-                  mkdir coverage
-                  mv target/site coverage
+                  mv target/site .
                   git config user.email "coutenay.yoan@hotmail.fr"
                   git config user.name "GitHub Actions"
+                  mv site coverage
                   git add coverage
                   git commit -m "Add backend test coverage reports"
                   git push origin main
@@ -70,6 +70,7 @@ jobs:
             if (Test-Path "coverage") {
                 Remove-Item -Recurse -Force "coverage"  # Supprime le dossier s'il existe déjà
             }
+            mv coverage/ .
             git config user.email "coutenay.yoan@hotmail.fr"
             git config user.name "GitHub Actions"
             git add coverage
