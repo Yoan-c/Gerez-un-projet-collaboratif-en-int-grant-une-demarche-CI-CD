@@ -50,8 +50,13 @@ jobs:
         run: |
          cd front
          npm install
-      - name: Install Chromium
-        run: sudo apt-get install -y chromium-browser
+      - name: Install istanbul
+        run: |
+          cd front
+          npm install -g istanbul
+          istanbul report --dir=./bobapp --type=lcov
+      - name: liste file
+        run: ls -l
       - name: Run tests and generate coverage report
         run: |
           cd front 
