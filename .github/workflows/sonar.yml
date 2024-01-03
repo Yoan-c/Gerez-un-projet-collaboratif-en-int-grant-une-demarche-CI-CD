@@ -55,11 +55,12 @@ jobs:
         run: |
           cd front
           ng test --browsers=ChromeHeadless --code-coverage --watch=false
-
+          npx istanbul report --dir coverage --include lcov
       - name: liste file
         run: |
           cd front
           ls -l 
+          ls -l coverage
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
