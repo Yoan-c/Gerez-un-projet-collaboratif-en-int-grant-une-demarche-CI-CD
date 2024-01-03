@@ -61,10 +61,9 @@ jobs:
           run:  npm install
     
         - name: Run tests and generate coverage report
-          run:  npm run test_CI
-
-        - name: liste dir
-          run:  dir
+          run: |
+           npm install -g @angular/cli
+           ng test --browsers ChromeHeadless --watch=false --code-coverage
                      
         - name: 'Add and commit report'
           run: |
