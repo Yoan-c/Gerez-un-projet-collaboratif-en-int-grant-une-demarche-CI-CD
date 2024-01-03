@@ -42,10 +42,18 @@ jobs:
   Front:
     name: build and analyze frontend
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: front 
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: check File
+        run: |
+          ls -l
+          ls -l front_coverage
+          cat front_coverage/lcov.info
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
